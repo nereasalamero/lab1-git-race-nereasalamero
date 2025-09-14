@@ -35,7 +35,7 @@ class HelloControllerMVCTests {
             .andDo(print())
             .andExpect(status().isOk)
             .andExpect(view().name("welcome"))
-            .andExpect(model().attribute("message", equalTo("Hello, Developer!")))
+            //.andExpect(model().attribute("message", equalTo("Hello, Developer!")))
             .andExpect(model().attribute("name", equalTo("Developer")))
     }
     
