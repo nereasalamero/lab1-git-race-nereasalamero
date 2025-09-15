@@ -110,6 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok && data.message) {
                 updateMainMessage(data.message, name);
             }
+
+            //Save name in Local Storage
+            localStorage.setItem("name", name)
         } catch (error) {
             displayResponseInfo(0, 'Network Error', { error: error.message });
         }

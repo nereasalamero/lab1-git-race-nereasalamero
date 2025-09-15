@@ -32,8 +32,25 @@ The following helper method has been added:
     }
 ```
 
+### User preferences
+Store user preferences in local storage. <br>
+The first variable saved is the user's name, as entered in the home page.
+To implement this, the following line has been added to the ``testApiBtn`` event listener.
+``` js
+    //Save name in Local Storage
+    localStorage.setItem("name", name)
+```
+
+
+
+
 ## Technical Decisions
 [Explanation of technical choices made]
+### User preferences
+Benefits of storing user preferences in local storage:
+- Data remains even after the browser is closed.
+- Simple API for storing and accessing data.
+- Works for the same source across several tabs in the browser.
 
 ## Learning Outcomes
 [What you learned from this assignment]
@@ -42,12 +59,24 @@ The following helper method has been added:
 
 ## AI Disclosure
 ### AI Tools Used
-- [List specific AI tools used]
+[List specific AI tools used]
+- DeepSeek
+- ChatGPT
+- Grammarly
 
 ### AI-Assisted Work
-- [Describe what was generated with AI assistance]
-- [Percentage of AI-assisted vs. original work]
-- [Any modifications made to AI-generated code]
+[Describe what was generated with AI assistance]<br>
+[Percentage of AI-assisted vs. original work]<br>
+[Any modifications made to AI-generated code]<br>
+**GENERAL MATTERS**
+- Generate an ordered list of the functionality, based on their difficulty. This helped me decide which functionalities I wanted to implement first.
+- Rewrite some of the explanations, in order to increase its clarity.
+
+**THEME CUSTOMISATION**
+- Little bugs fix (e.g. route bugs).
+
+**MULTI-LANGUAGE SUPPORT**
+- What is i18n, how to install it, how to solve installation errors.
 
 ### Original Work
 - [Describe work done without AI assistance]
@@ -57,4 +86,6 @@ The following helper method has been added:
 ## Bibliography 
 - Markdown guide in order to understand how its syntax works.
   - https://www.markdownguide.org/
+- How to use Local Storage in JavaScript
+  - https://staticmania.com/blog/how-to-use-local-storage-in-javascript
 - 
