@@ -9,9 +9,13 @@
           rel="stylesheet"
           crossorigin="anonymous">
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+
+    <!-- Theme stylesheet -->
+    <link id="themeStylesheet" th:href="@{/css/light.css}" href="/css/light.css" rel="stylesheet">
+
     <link th:href="@{/css/styles.css}" href="/css/styles.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="/">
@@ -21,6 +25,8 @@
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/actuator/health" target="_blank">Health</a>
                 <a class="nav-link" href="/api/hello">API</a>
+
+                <button id="btnTheme" class="btn btn-outline-light">Change theme</button>
             </div>
         </div>
     </nav>
@@ -147,6 +153,9 @@
     
     <!-- HTTP Debug JavaScript -->
     <script th:src="@{/js/http-debug.js}" src="/js/http-debug.js"></script>
+
+    <!-- Theme modifier JavaScript -->
+    <script th:src="@{/js/theme.js}"></script>
     
     <!-- LiveReload Script for Development -->
     <script>

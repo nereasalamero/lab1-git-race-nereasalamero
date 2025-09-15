@@ -1,0 +1,12 @@
+body {
+    background-color: #212529;
+    color: #f8f9fa;
+}
+
+.navbar {
+    background-color: #000000 !important;
+}
+
+.card {
+    background-color: #343a40;
+}
