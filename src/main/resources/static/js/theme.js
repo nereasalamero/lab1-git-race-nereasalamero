@@ -3,17 +3,26 @@
  */
 document.addEventListener("DOMContentLoaded", () => {
     const themeBtn = document.getElementById("btnTheme");
-    const themeLink = document.getElementById("themeStylesheet");
 
+    // Load current saved theme
     const savedTheme = localStorage.getItem("theme") || "light";
-    themeLink.href = `/css/${savedTheme}.css`;
+    // If the theme is dark, then add "darkmode" to the class of body
+    if (savedTheme === "dark") {
+        document.body.classList.add("darkmode");
+    }
+    else {
+        document.body.classList.remove("darkmode");
+    }
 
     themeBtn.addEventListener("click", () => {
-        let currentTheme = themeLink.includes("light.css") ? "light" : "dark";
-        let newTheme = currentTheme === "light" ? "dark" : "light";
-        themeLink.href = `/css/${newTheme}.css`;
+        document.body.classList.toggle("darkmode");
 
-        // Save new theme
-        localStorage.setItem("theme", newTheme);
+        // Save preference after clicking the theme button.
+        if (document.body.classList.contains("darkmode")) {
+            localStorage.setItem("theme", "dark");    // Save new theme
+        }
+        else {
+            localStorage.setItem("theme", "light");    // Save new theme
+        }
     })
 })
