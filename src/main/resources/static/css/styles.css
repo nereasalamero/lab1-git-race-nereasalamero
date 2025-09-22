@@ -33,15 +33,17 @@
     --text-color: #122111;
     --secondary-text: #233628;
     --primary-color: gray;
+    --custom-color: #f3eaf4;
 }
 
 /* Dark theme */
 .darkmode{
     --base-color: #122111;
-    --base-variant: #233628;
+    --base-variant: #093824;
     --text-color: white;
-    --secondary-text: #e8e9ed;
-    --primary-color: gray;
+    --secondary-text: #91F5AD;
+    --primary-color: #3F793E;
+    --custom-color: #065143;
 }
 
 #btnTheme{
@@ -70,7 +72,38 @@
     display: none;
 }
 
+.text-muted {
+    color: var(--secondary-text) !important; /* !important because we want it to be max priority */
+}
+
 body {
     background-color: var(--base-color);
+    color: var(--text-color);
+}
+
+/* Card */
+.card {
+    background-color: var(--base-color);
+    color: var(--text-color);
+}
+
+.card-header {
+    background-color: var(--base-variant);
+    color: var(--text-color);
+}
+
+.card-body {
+    background-color: var(--base-variant);
+    color: var(--text-color);
+}
+
+/* Navbar (heading) */
+.navbar {
+    background-color: var(--custom-color);
+    color: var(--text-color);
+}
+
+footer {
+    background-color: var(--custom-color);
     color: var(--text-color);
 }

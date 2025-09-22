@@ -43,7 +43,7 @@
                         <div class="row mt-4">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header bg-info">
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">
                                             <i class="bi bi-code-slash"></i> Interactive HTTP Testing & Debug
                                             <small class="float-end">Client-Side Educational Tool</small>
@@ -101,7 +101,7 @@
                                                 <h6 class="text-primary text-start">
                                                     <i class="bi bi-arrow-right-circle"></i> HTTP Request
                                                 </h6>
-                                                <div id="requestInfo" class="bg-light p-3 rounded text-start http-debug-request">
+                                                <div id="requestInfo" class="p-3 rounded text-start http-debug-request">
                                                     <div class="text-muted">Click a test button above to see HTTP request details...</div>
                                                 </div>
                                             </div>
@@ -110,7 +110,7 @@
                                                 <h6 class="text-success text-start">
                                                     <i class="bi bi-arrow-left-circle"></i> HTTP Response
                                                 </h6>
-                                                <div id="responseInfo" class="bg-light p-3 rounded text-start http-debug-response">
+                                                <div id="responseInfo" class="p-3 rounded text-start http-debug-response">
                                                     <div class="text-muted">Click a test button above to see HTTP response details...</div>
                                                 </div>
                                             </div>
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <footer class="bg-dark text-light text-center py-3 mt-5">
+    <footer class="text-center py-3 mt-5">
         <div class="container">
             <p class="mb-0">&copy; 2025 Modern Web App. Built with Spring Boot 3.5.3 & Kotlin 2.2.10</p>
         </div>
@@ -154,7 +154,7 @@
     <script th:src="@{/js/http-debug.js}" src="/js/http-debug.js"></script>
 
     <!-- Theme modifier JavaScript -->
-    <script th:src="@{/js/theme.js}"></script>
+    <script th:src="@{/js/theme.js}" src="/js/theme.js"></script>
     
     <!-- LiveReload Script for Development -->
     <script>
