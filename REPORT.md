@@ -54,7 +54,7 @@ Another variable saved in local storage is the page's theme. I have used the sam
 Allow users to customise the theme of the page (dark/light mode). <br>
 In order to implement this feature, some lines have been added to `styles.css`.
 
-********
+******
 
 ## Technical Decisions
 [Explanation of technical choices made]
@@ -63,9 +63,6 @@ Benefits of storing user preferences in local storage:
 - Data remains even after the browser is closed.
 - Simple API for storing and accessing data.
 - Works for the same source across several tabs in the browser.
-
-### Theme customisation
-
 
 
 ## Learning Outcomes
@@ -90,7 +87,7 @@ Benefits of storing user preferences in local storage:
 
 **THEME CUSTOMISATION**
 - Little bugs fix (e.g. route bugs).
-- 
+
 
 **MULTI-LANGUAGE SUPPORT**
 - What is i18n, how to install it, how to solve installation errors.
@@ -98,6 +95,7 @@ Benefits of storing user preferences in local storage:
 ### Original Work
 - [Describe work done without AI assistance]
 - [Your understanding and learning process]
+
 
 
 ## Bibliography
@@ -109,4 +107,3 @@ Benefits of storing user preferences in local storage:
   - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties
 - How to toggle dark mode
   - https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp
-- 
