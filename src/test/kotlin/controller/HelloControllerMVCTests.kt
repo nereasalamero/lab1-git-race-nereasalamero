@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+import java.time.LocalTime
 
 @WebMvcTest(HelloController::class, HelloApiController::class)
 class HelloControllerMVCTests {
@@ -18,6 +19,17 @@ class HelloControllerMVCTests {
 
     @Autowired
     private lateinit var mockMvc: MockMvc
+
+    private fun greeting(): String {
+        val currentTime = LocalTime.now().hour
+
+        return when (currentTime) {
+            in 5..11 -> "Good morning"
+            in 12..17 -> "Good afternoon"
+            in 18..20 -> "Good evening"
+            else -> "Good night"
+        }
+    }
 
     @Test
     fun `should return home page with default message`() {
@@ -35,7 +47,7 @@ class HelloControllerMVCTests {
             .andDo(print())
             .andExpect(status().isOk)
             .andExpect(view().name("welcome"))
-            //.andExpect(model().attribute("message", equalTo("Hello, Developer!")))
+            .andExpect(model().attribute("message", equalTo("Hello, Developer!")))
             .andExpect(model().attribute("name", equalTo("Developer")))
     }
     
@@ -45,7 +57,7 @@ class HelloControllerMVCTests {
             .andDo(print())
             .andExpect(status().isOk)
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.message", equalTo("Hello, Test!")))
+            .andExpect(jsonPath("$.message", equalTo("${greeting()}, Test!")))
             .andExpect(jsonPath("$.timestamp").exists())
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import java.time.LocalTime
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class IntegrationTest {
@@ -17,6 +18,16 @@ class IntegrationTest {
 
     @Autowired
     private lateinit var restTemplate: TestRestTemplate
+    private fun greeting(): String {
+        val currentTime = LocalTime.now().hour
+
+        return when (currentTime) {
+            in 5..11 -> "Good morning"
+            in 12..17 -> "Good afternoon"
+            in 18..20 -> "Good evening"
+            else -> "Good night"
+        }
+    }
 
     @Test
     fun `should return home page with modern title and client-side HTTP debug`() {
@@ -34,7 +45,7 @@ class IntegrationTest {
         val response = restTemplate.getForEntity("http://localhost:$port?name=Developer", String::class.java)
         
         assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
-        assertThat(response.body).contains("Hello, Developer!")
+        assertThat(response.body).contains("${greeting()}, Developer!")
     }
 
     @Test
@@ -43,7 +54,7 @@ class IntegrationTest {
         
         assertThat(response.statusCode).isEqualTo(HttpStatus.OK)
         assertThat(response.headers.contentType).isEqualTo(MediaType.APPLICATION_JSON)
-        assertThat(response.body).contains("Hello, Test!")
+        assertThat(response.body).contains("${greeting()}, Test!")
         assertThat(response.body).contains("timestamp")
     }
 

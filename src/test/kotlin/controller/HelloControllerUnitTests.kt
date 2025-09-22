@@ -5,10 +5,22 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.ui.Model
 import org.springframework.ui.ExtendedModelMap
+import java.time.LocalTime
 
 class HelloControllerUnitTests {
     private lateinit var controller: HelloController
     private lateinit var model: Model
+
+    private fun greeting(): String {
+        val currentTime = LocalTime.now().hour
+
+        return when (currentTime) {
+            in 5..11 -> "Good morning"
+            in 12..17 -> "Good afternoon"
+            in 18..20 -> "Good evening"
+            else -> "Good night"
+        }
+    }
     
     @BeforeEach
     fun setup() {
@@ -26,11 +38,10 @@ class HelloControllerUnitTests {
     }
     
     @Test
-    fun `should return welcome view with personalized message`() {
+    fun `should return welcome view with time-based greeting`() {
         val view = controller.welcome(model, "Developer")
-        
-        assertThat(view).isEqualTo("welcome")
-        assertThat(model.getAttribute("message")).isEqualTo("Hello, Developer!")
+                assertThat(view).isEqualTo("welcome")
+        assertThat(model.getAttribute("message")).isEqualTo("${greeting()}, Developer!")
         assertThat(model.getAttribute("name")).isEqualTo("Developer")
     }
     
@@ -38,10 +49,10 @@ class HelloControllerUnitTests {
     fun `should return API response with timestamp`() {
         val apiController = HelloApiController()
         val response = apiController.helloApi("Test")
-        
+
         assertThat(response).containsKey("message")
         assertThat(response).containsKey("timestamp")
-        assertThat(response["message"]).isEqualTo("Hello, Test!")
+        assertThat(response["message"]).isEqualTo("${greeting()}, Test!")
         assertThat(response["timestamp"]).isNotNull()
     }
 }

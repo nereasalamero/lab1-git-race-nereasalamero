@@ -9,11 +9,10 @@
           rel="stylesheet"
           crossorigin="anonymous">
     <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
-
     <link th:href="@{/css/styles.css}" href="/css/styles.css" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg">  <!-- Header -->
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="/">
                 <img src="/assets/logo.svg" alt="Universidad Zaragoza Logo" class="me-2 navbar-logo">
@@ -23,10 +22,6 @@
                 <a class="nav-link" href="/actuator/health" target="_blank">Health</a>
                 <a class="nav-link" href="/api/hello">API</a>
             </div>
-            <button id="btnTheme" class="btn btn-outline-light">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>
-            </button>
         </div>
     </nav>
 
@@ -36,14 +31,14 @@
                 <div class="card shadow">
                     <div class="card-body text-center p-5">
                         <img class="d-block mx-auto mb-4 main-logo" src="/assets/logo.svg" alt="Universidad Zaragoza Logo">
-                        <h1 class="display-4 fw-bold mb-4">Welcome to Modern Web App</h1>
+                        <h1 class="display-4 fw-bold text-primary mb-4">Welcome to Modern Web App</h1>
                         <p class="lead mb-4" th:text="${message}">Hello student.</p>
                         
                         <!-- HTTP Debug Section -->
                         <div class="row mt-4">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-header">
+                                    <div class="card-header bg-info text-white">
                                         <h5 class="card-title mb-0">
                                             <i class="bi bi-code-slash"></i> Interactive HTTP Testing & Debug
                                             <small class="float-end">Client-Side Educational Tool</small>
@@ -101,7 +96,7 @@
                                                 <h6 class="text-primary text-start">
                                                     <i class="bi bi-arrow-right-circle"></i> HTTP Request
                                                 </h6>
-                                                <div id="requestInfo" class="p-3 rounded text-start http-debug-request">
+                                                <div id="requestInfo" class="bg-light p-3 rounded text-start http-debug-request">
                                                     <div class="text-muted">Click a test button above to see HTTP request details...</div>
                                                 </div>
                                             </div>
@@ -110,7 +105,7 @@
                                                 <h6 class="text-success text-start">
                                                     <i class="bi bi-arrow-left-circle"></i> HTTP Response
                                                 </h6>
-                                                <div id="responseInfo" class="p-3 rounded text-start http-debug-response">
+                                                <div id="responseInfo" class="bg-light p-3 rounded text-start http-debug-response">
                                                     <div class="text-muted">Click a test button above to see HTTP response details...</div>
                                                 </div>
                                             </div>
@@ -140,7 +135,7 @@
         </div>
     </div>
 
-    <footer class="text-center py-3 mt-5">
+    <footer class="bg-dark text-light text-center py-3 mt-5">
         <div class="container">
             <p class="mb-0">&copy; 2025 Modern Web App. Built with Spring Boot 3.5.3 & Kotlin 2.2.10</p>
         </div>
@@ -152,9 +147,6 @@
     
     <!-- HTTP Debug JavaScript -->
     <script th:src="@{/js/http-debug.js}" src="/js/http-debug.js"></script>
-
-    <!-- Theme modifier JavaScript -->
-    <script th:src="@{/js/theme.js}" src="/js/theme.js"></script>
     
     <!-- LiveReload Script for Development -->
     <script>
