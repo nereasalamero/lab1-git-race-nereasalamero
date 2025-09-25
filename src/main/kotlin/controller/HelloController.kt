@@ -7,6 +7,7 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalTime
 
 @Controller
 class HelloController(
@@ -19,13 +20,11 @@ class HelloController(
         model: Model,
         @RequestParam(defaultValue = "") name: String
     ): String {
-        val greeting = if (name.isNotBlank()) "Hello, $name!" else message
+        val greeting = if (name.isNotBlank()) "${getTimeGreeting()}, $name!" else message
         model.addAttribute("message", greeting)
         model.addAttribute("name", name)
         return "welcome"
     }
-<<<<<<< Updated upstream
-=======
 
     /** Helper method to return greeting based on the current time
      *       Morning    -> 05:00 - 11:59
@@ -42,7 +41,6 @@ class HelloController(
             else -> "Good night"
         }
     }
->>>>>>> Stashed changes
 }
 
 @RestController
@@ -51,12 +49,10 @@ class HelloApiController {
     @GetMapping("/api/hello", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun helloApi(@RequestParam(defaultValue = "World") name: String): Map<String, String> {
         return mapOf(
-            "message" to "Hello, $name!",
+            "message" to "${getApiTimeGreeting()}, $name!",
             "timestamp" to java.time.Instant.now().toString()
         )
     }
-<<<<<<< Updated upstream
-=======
 
     /** Helper method duplicated */
     private fun getApiTimeGreeting(): String {
@@ -69,5 +65,4 @@ class HelloApiController {
             else -> "Good night"
         }
     }
->>>>>>> Stashed changes
 }
