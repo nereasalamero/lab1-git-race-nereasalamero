@@ -20,6 +20,7 @@ class HelloControllerMVCTests {
     @Autowired
     private lateinit var mockMvc: MockMvc
 
+    // Depending on the local hour, it returns the expected greeting.
     private fun greeting(): String {
         val currentTime = LocalTime.now().hour
 
@@ -33,7 +34,7 @@ class HelloControllerMVCTests {
 
     @Test
     fun `should return home page with default message`() {
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/").param("lang","en"))
             .andDo(print())
             .andExpect(status().isOk)
             .andExpect(view().name("welcome"))
@@ -47,7 +48,7 @@ class HelloControllerMVCTests {
             .andDo(print())
             .andExpect(status().isOk)
             .andExpect(view().name("welcome"))
-            .andExpect(model().attribute("message", equalTo("Hello, Developer!")))
+            .andExpect(model().attribute("message", equalTo("${greeting()}, Developer!")))
             .andExpect(model().attribute("name", equalTo("Developer")))
     }
     
@@ -60,5 +61,33 @@ class HelloControllerMVCTests {
             .andExpect(jsonPath("$.message", equalTo("${greeting()}, Test!")))
             .andExpect(jsonPath("$.timestamp").exists())
     }
+
+    /**
+     * Tests in Spanish
+     */
+    @Test
+    fun `should return home page with default message (spanish)`() {
+        mockMvc.perform(get("/").param("lang","es"))
+            .andDo(print())
+            .andExpect(status().isOk)
+            .andExpect(view().name("welcome"))
+            .andExpect(model().attribute("message", equalTo(message)))
+            .andExpect(model().attribute("name", equalTo("")))
+    }
+
+    /**
+     * Tests in French
+     */
+    @Test
+    fun `should return home page with default message (french)`() {
+        mockMvc.perform(get("/").param("lang","fr"))
+            .andDo(print())
+            .andExpect(status().isOk)
+            .andExpect(view().name("welcome"))
+            .andExpect(model().attribute("message", equalTo(message)))
+            .andExpect(model().attribute("name", equalTo("")))
+    }
+
+
 }
 

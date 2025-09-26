@@ -3,9 +3,11 @@ package es.unizar.webeng.hello.controller
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.ui.Model
 import org.springframework.ui.ExtendedModelMap
 import java.time.LocalTime
+import java.util.Locale
 
 class HelloControllerUnitTests {
     private lateinit var controller: HelloController
@@ -54,5 +56,31 @@ class HelloControllerUnitTests {
         assertThat(response).containsKey("timestamp")
         assertThat(response["message"]).isEqualTo("${greeting()}, Test!")
         assertThat(response["timestamp"]).isNotNull()
+    }
+
+    /**
+     * Test in Spanish
+     */
+    @Test
+    fun `should return welcome view with default message (spanish)`() {
+        LocaleContextHolder.setLocale(Locale("es"))
+        val view = controller.welcome(model, "")
+
+        assertThat(view).isEqualTo("welcome")
+        assertThat(model.getAttribute("message")).isEqualTo("Test Message")
+        assertThat(model.getAttribute("name")).isEqualTo("")
+    }
+
+    /**
+     * Test in French
+     */
+    @Test
+    fun `should return welcome view with default message (french)`() {
+        LocaleContextHolder.setLocale(Locale("fr"))
+        val view = controller.welcome(model, "")
+
+        assertThat(view).isEqualTo("welcome")
+        assertThat(model.getAttribute("message")).isEqualTo("Test Message")
+        assertThat(model.getAttribute("name")).isEqualTo("")
     }
 }

@@ -5,7 +5,7 @@
 ### Time-based greeting
 Modify the greeting message based on the time of day. <br>
 
-| **Greeting**       | **Time**          |
+| **Greeting**   | **Time**      |
 |----------------|---------------| 
 | Good morning   | 05:00 - 11:59 |
 | Good afternoon | 12:00 - 17:59 |
@@ -52,7 +52,19 @@ Another variable saved in local storage is the page's theme. I have used the sam
 
 ### Theme customisation
 Allow users to customise the theme of the page (dark/light mode). <br>
-In order to implement this feature, some lines have been added to `styles.css`.
+In order to implement this feature, some lines have been added to `styles.css`. 
+Added a toggle button in `welcome.html` that allows users change from light to dark theme.
+User's theme choice is remembered in localStorage
+
+### Multi-language support
+Allow users to choose their preferred language by using a selector.
+- Added message files (`messages.properties`, `messages_en.properties`,`messages_es.properties`, `messages_fr.properties`)
+- Configured i18n with default locale en, and created a LocaleChangeInterceptor to listen for ?lang=... changes
+- Updated `welcome.html` to use messages lookups
+``` html
+    <h1 th:text="#{app.title}"></h1>
+```
+- Added a language selector in the navbar
 
 ******
 
@@ -67,8 +79,10 @@ Benefits of storing user preferences in local storage:
 
 ## Learning Outcomes
 [What you learned from this assignment]
-
-
+- Some features may sound easy, but in reality they are the most tricky ones.
+- Learned how Spring Boot internationalisation works.
+- Understand how testing works
+******
 
 ## AI Disclosure
 ### AI Tools Used
@@ -84,19 +98,26 @@ Benefits of storing user preferences in local storage:
 **GENERAL MATTERS**
 - Generate an ordered list of the functionality, based on their difficulty. This helped me decide which functionalities I wanted to implement first.
 - Rewrite some of the explanations, in order to increase its clarity.
+- Explanations on how to do tests.
 
 **THEME CUSTOMISATION**
 - Little bugs fix (e.g. route bugs).
 
-
 **MULTI-LANGUAGE SUPPORT**
 - What is i18n, how to install it, how to solve installation errors.
+- Translation to French.
+
+**USER PREFERENCES**
+- None
+
+**TIME-BASED GREETING**
+- 
 
 ### Original Work
 - [Describe work done without AI assistance]
 - [Your understanding and learning process]
 
-
+******
 
 ## Bibliography
 - Markdown guide in order to understand how its syntax works.
