@@ -138,7 +138,6 @@ I wanted to implement first.
 
 **THEME CUSTOMISATION**
 - Debugging small issues (e.g. fixing path errors).
-- 
 
 **MULTI-LANGUAGE SUPPORT**
 - Explanation of i18n and how to implement it.
